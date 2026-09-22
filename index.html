@@ -1,0 +1,369 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title data-i18n="meta.title">Ailan — голосовой помощник, который всегда рядом</title>
+<meta name="description" data-i18n-content="meta.description" content="Голосовой ИИ-помощник для компьютера на казахском и русском. Пожилые, незрячие и слабовидящие люди говорят задачу своими словами — Ailan сам нажимает кнопки.">
+<meta name="theme-color" content="#0F1C2E">
+<link rel="icon" href="assets/favicon.svg?v=2" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@800;900&family=Golos+Text:wght@400;500;600;700&display=swap">
+<!-- ?v=2: до 17.09 стили и иконки кешировались на неделю, номер версии заставляет браузер скачать их заново -->
+<link rel="stylesheet" href="styles.css?v=2">
+<script>
+  // Настройки доступности и язык применяются до отрисовки, чтобы страница не мигала.
+  try {
+    var s = localStorage;
+    if (s.getItem("ailan.large") === "1") document.documentElement.classList.add("a11y-large");
+    if (s.getItem("ailan.contrast") === "1") document.documentElement.classList.add("a11y-contrast");
+  } catch (e) {}
+</script>
+</head>
+<body>
+<!-- Логотип Ailan — полумесяц («Ай» — луна). Контур снят с логотипа: вырез смещён вправо
+     на 0,241 радиуса и чуть вверх, радиус выреза 0,751 внешнего. -->
+<svg class="sprite" aria-hidden="true" focusable="false"><symbol id="crescent" viewBox="0 0 100 100"><path fill="currentColor" fill-rule="evenodd" d="M2 50a48 48 0 1 0 96 0a48 48 0 1 0-96 0ZM25.52 49.38a36.05 36.05 0 1 0 72.1 0a36.05 36.05 0 1 0-72.1 0Z"/></symbol></svg>
+<a class="skip" href="#main" data-i18n="a11y.skip">Перейти к содержанию</a>
+
+<header class="header" id="top">
+  <div class="container header__row">
+    <a class="logo" href="#top" aria-label="Ailan">
+      <svg class="logo__mark" aria-hidden="true"><use href="#crescent"/></svg><span class="logo__word">Ailan</span>
+    </a>
+    <nav class="nav" id="nav" aria-label="Menu">
+      <a href="#solution" data-i18n="nav.about">О проекте</a>
+      <a href="#features" data-i18n="nav.features">Возможности</a>
+      <a href="#how" data-i18n="nav.how">Как это работает</a>
+      <a href="#family" data-i18n="nav.family">Для семьи</a>
+      <a href="#team" data-i18n="nav.team">Команда</a>
+    </nav>
+    <div class="header__tools">
+      <div class="lang" role="group" aria-label="Language">
+        <button type="button" data-lang="kk" lang="kk">ҚАЗ</button>
+        <button type="button" data-lang="ru" lang="ru" aria-pressed="true">РУС</button>
+        <button type="button" data-lang="en" lang="en">ENG</button>
+      </div>
+      <button type="button" class="tool" id="toggle-large" aria-pressed="false" data-i18n-title="a11y.large" title="Крупный текст">A+</button>
+      <button type="button" class="tool" id="toggle-contrast" aria-pressed="false" data-i18n-title="a11y.contrast" title="Контраст"><span class="tool__contrast" aria-hidden="true"></span><span class="sr-only" data-i18n="a11y.contrast">Контраст</span></button>
+      <a class="btn btn--primary btn--sm header__cta" href="#try" data-i18n="header.cta">Попробовать Ailan</a>
+      <button type="button" class="tool menu-btn" id="menu-btn" aria-controls="nav" aria-expanded="false"><span class="menu-btn__bars" aria-hidden="true"></span><span class="sr-only" data-i18n="a11y.menu">Меню</span></button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+
+<section class="hero">
+  <div class="container hero__grid">
+    <div class="hero__copy">
+      <p class="pill" data-i18n="hero.eyebrow">Голосовой помощник на казахском и русском</p>
+      <h1 class="hero__title" data-i18n="hero.title">Ailan — помощник, который всегда рядом</h1>
+      <p class="hero__lead" data-i18n="hero.lead">Голосовой ИИ-помощник для компьютера. Пожилые, незрячие и слабовидящие люди говорят задачу своими словами, а Ailan сам нажимает кнопки: пишет близким, включает музыку, напоминает о лекарствах и зовёт на помощь.</p>
+      <div class="actions">
+        <a class="btn btn--primary" href="#how"><span data-i18n="hero.cta1">Как это работает</span><img src="assets/icons/arrow-right.svg?v=2" alt="" width="16" height="16"></a>
+        <a class="btn btn--ghost" href="#solution" data-i18n="hero.cta2">Узнать больше</a>
+      </div>
+      <div class="trust">
+        <span class="trust__faces" aria-hidden="true">
+          <img src="assets/img/team-1.jpg" alt="" width="32" height="32">
+          <img src="assets/img/team-2.jpg" alt="" width="32" height="32">
+          <img src="assets/img/team-3.jpg" alt="" width="32" height="32">
+        </span>
+        <span data-i18n="hero.trust">Разработано в Казахстане с заботой о старшем поколении</span>
+      </div>
+    </div>
+    <div class="hero__visual" aria-hidden="true">
+      <svg class="hero__moon"><use href="#crescent"/></svg>
+      <div class="device">
+        <div class="device__notch"></div>
+        <p class="device__brand"><svg><use href="#crescent"/></svg>Ailan</p>
+        <p class="device__status"><span class="device__dot"></span><span data-i18n="mock.status">Слушаю</span></p>
+        <p class="bubble bubble--user" data-i18n="mock.q">«Айлан, напиши Айдане, что я дома»</p>
+        <p class="bubble bubble--ailan" data-i18n="mock.a">«Отправить Айдане: „я дома“?»</p>
+        <div class="wave"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+        <span class="mic"><img src="assets/icons/mic.svg?v=2" alt="" width="36" height="36"></span>
+        <p class="device__hint" data-i18n="mock.hint">Зажмите и говорите</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section--white" id="problem" aria-labelledby="problem-title">
+  <div class="container">
+    <header class="section__head">
+      <p class="pill" data-i18n="problem.eyebrow">Проблема</p>
+      <h2 class="h2" id="problem-title" data-i18n="problem.title">Почему современная техника пугает наших родителей?</h2>
+      <p class="lead" data-i18n="problem.lead">С каждым обновлением технологии становятся сложнее, и между поколениями вырастает барьер.</p>
+    </header>
+    <div class="grid grid--3">
+      <article class="card card--problem">
+        <span class="icon icon--problem"><img src="assets/icons/x-circle.svg?v=2" alt="" width="20" height="20"></span>
+        <h3 class="h3" data-i18n="problem.c1.title">Сложные программы</h3>
+        <p data-i18n="problem.c1.text">Вкладки, скрытые меню и непонятные значки вызывают стресс и мешают сделать даже простое.</p>
+      </article>
+      <article class="card card--problem">
+        <span class="icon icon--problem"><img src="assets/icons/x-circle.svg?v=2" alt="" width="20" height="20"></span>
+        <h3 class="h3" data-i18n="problem.c2.title">Мелкие кнопки и текст</h3>
+        <p data-i18n="problem.c2.text">Интерфейсы рассчитаны на молодых: при слабом зрении и дрожащих руках попасть по кнопке трудно.</p>
+      </article>
+      <article class="card card--problem">
+        <span class="icon icon--problem"><img src="assets/icons/x-circle.svg?v=2" alt="" width="20" height="20"></span>
+        <h3 class="h3" data-i18n="problem.c3.title">Слишком много настроек</h3>
+        <p data-i18n="problem.c3.text">Обновления, всплывающие окна и пароли — и человек снова ждёт, пока приедут дети.</p>
+      </article>
+    </div>
+    <dl class="stats">
+      <div class="stat"><dt class="stat__num" data-i18n="stats.n1">1,98 млн</dt><dd data-i18n="stats.s1">казахстанцев старше 65 лет</dd></div>
+      <div class="stat"><dt class="stat__num" data-i18n="stats.n2">743,9 тыс.</dt><dd data-i18n="stats.s2">людей с инвалидностью</dd></div>
+      <div class="stat"><dt class="stat__num" data-i18n="stats.n3">57,2%</dt><dd data-i18n="stats.s3">домохозяйств с компьютером или ноутбуком</dd></div>
+    </dl>
+    <p class="source" data-i18n="stats.source">Источники: ЕНПФ (население на 1 января 2026), sozmedia.kz, energyprom.kz</p>
+  </div>
+</section>
+
+<section class="section" id="solution" aria-labelledby="solution-title">
+  <div class="container split">
+    <div class="split__media">
+      <img class="photo" src="assets/img/solution.jpg" width="624" height="480" loading="lazy" data-i18n-alt="solution.alt" alt="Пожилая женщина разговаривает по телефону и улыбается">
+      <div class="badge-card">
+        <span class="icon icon--accent icon--sm"><img src="assets/icons/audio-waveform.svg?v=2" alt="" width="18" height="18"></span>
+        <div><p class="badge-card__title" data-i18n="solution.badge.title">MVP уже работает</p><p class="badge-card__text" data-i18n="solution.badge.text">13 из 13 сценариев приёмки</p></div>
+      </div>
+    </div>
+    <div class="split__copy">
+      <p class="pill" data-i18n="solution.eyebrow">Решение — Ailan</p>
+      <h2 class="h2" id="solution-title" data-i18n="solution.title">Просто скажите, что вам нужно.</h2>
+      <p class="lead" data-i18n="solution.lead">Не нужно искать кнопки, меню и пароли. Скажите «Айлан» или зажмите одну клавишу и произнесите задачу на казахском или русском — Ailan сделает остальное.</p>
+      <ul class="checks">
+        <li><span class="icon icon--ok"><img src="assets/icons/check-circle.svg?v=2" alt="" width="12" height="12"></span><span data-i18n="solution.l1">Не нужно искать контакты и кнопки</span></li>
+        <li><span class="icon icon--ok"><img src="assets/icons/check-circle.svg?v=2" alt="" width="12" height="12"></span><span data-i18n="solution.l2">Никакого мелкого шрифта: всё голосом</span></li>
+        <li><span class="icon icon--ok"><img src="assets/icons/check-circle.svg?v=2" alt="" width="12" height="12"></span><span data-i18n="solution.l3">Переспрашивает перед отправкой сообщения</span></li>
+        <li><span class="icon icon--ok"><img src="assets/icons/check-circle.svg?v=2" alt="" width="12" height="12"></span><span data-i18n="solution.l4">Никогда не трогает деньги, банки и покупки</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="section section--white" id="features" aria-labelledby="features-title">
+  <div class="container">
+    <header class="section__head">
+      <p class="pill" data-i18n="features.eyebrow">Возможности</p>
+      <h2 class="h2" id="features-title" data-i18n="features.title">Окружите родителей заботой</h2>
+      <p class="lead" data-i18n="features.lead">Самые нужные дела на компьютере теперь делаются самым простым способом — голосом.</p>
+    </header>
+    <div class="grid grid--3">
+      <article class="card">
+        <span class="icon icon--accent"><img src="assets/icons/phone.svg?v=2" alt="" width="24" height="24"></span>
+        <h3 class="h3" data-i18n="features.f1.title">Сообщения близким</h3>
+        <p data-i18n="features.f1.text">«Напиши дочери Айдане, что я дома» — WhatsApp и Telegram, с вопросом перед отправкой.</p>
+      </article>
+      <article class="card">
+        <span class="icon icon--accent"><img src="assets/icons/clock.svg?v=2" alt="" width="24" height="24"></span>
+        <h3 class="h3" data-i18n="features.f2.title">Напоминания</h3>
+        <p data-i18n="features.f2.text">«Напомни позвонить сыну в 18:30» — Ailan скажет вовремя и повторит.</p>
+      </article>
+      <article class="card">
+        <span class="icon icon--accent"><img src="assets/icons/pill.svg?v=2" alt="" width="24" height="24"></span>
+        <h3 class="h3" data-i18n="features.f3.title">Лекарства</h3>
+        <p data-i18n="features.f3.text">«Через 10 минут напомни выпить таблетки» — бережный контроль за приёмом лекарств.</p>
+      </article>
+      <article class="card">
+        <span class="icon icon--accent"><img src="assets/icons/audio-waveform.svg?v=2" alt="" width="24" height="24"></span>
+        <h3 class="h3" data-i18n="features.f4.title">Музыка и видео</h3>
+        <p data-i18n="features.f4.text">«Включи Кайрата Нуртаса» — YouTube и Spotify без поиска и кнопок.</p>
+      </article>
+      <article class="card">
+        <span class="icon icon--accent"><img src="assets/icons/circle-x.svg?v=2" alt="" width="24" height="24"></span>
+        <h3 class="h3" data-i18n="features.f5.title">Помощь в экстренной ситуации</h3>
+        <p data-i18n="features.f5.text">«Помогите» — Ailan пишет и звонит доверенному человеку.</p>
+      </article>
+      <article class="card">
+        <span class="icon icon--accent"><img src="assets/icons/brain-circuit.svg?v=2" alt="" width="24" height="24"></span>
+        <h3 class="h3" data-i18n="features.f6.title">Казахский и русский ИИ</h3>
+        <p data-i18n="features.f6.text">Понимает живую речь и отвечает на том языке, на котором к нему обратились.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="how" aria-labelledby="how-title">
+  <div class="container">
+    <header class="section__head">
+      <p class="pill" data-i18n="how.eyebrow">Простой процесс</p>
+      <h2 class="h2" id="how-title" data-i18n="how.title">Как это работает</h2>
+      <p class="lead" data-i18n="how.lead">Три шага, чтобы пользоваться компьютером без стресса.</p>
+    </header>
+    <ol class="grid grid--3 steps">
+      <li class="step"><span class="step__num">01</span><h3 class="h3" data-i18n="how.s1.title">Скажите</h3><p data-i18n="how.s1.text">Скажите «Айлан» или зажмите клавишу Copilot и произнесите задачу на казахском или русском.</p></li>
+      <li class="step"><span class="step__num">02</span><h3 class="h3" data-i18n="how.s2.title">Ailan понимает</h3><p data-i18n="how.s2.text">Распознаёт живую речь и понимает, что нужно сделать, даже если сказано своими словами.</p></li>
+      <li class="step"><span class="step__num">03</span><h3 class="h3" data-i18n="how.s3.title">Получите результат</h3><p data-i18n="how.s3.text">Ailan сам нажимает кнопки, проверяет результат и говорит вслух, что сделал.</p></li>
+    </ol>
+  </div>
+</section>
+
+<section class="section section--white" id="elderly" aria-labelledby="elderly-title">
+  <div class="container split split--reverse">
+    <div class="split__copy">
+      <p class="pill" data-i18n="elderly.eyebrow">Для пожилых</p>
+      <h2 class="h2" id="elderly-title" data-i18n="elderly.title">Забота и независимость для ваших родителей</h2>
+      <p class="lead" data-i18n="elderly.lead">Ailan возвращает пожилым людям уверенность и самостоятельность в цифровом мире.</p>
+      <ul class="points">
+        <li><span class="icon icon--accent icon--xs"><img src="assets/icons/shield-check.svg?v=2" alt="" width="14" height="14"></span><div><h3 class="h4" data-i18n="elderly.e1.title">Простота</h3><p data-i18n="elderly.e1.text">Одно слово или одна клавиша. Запутаться в меню или нажать не то невозможно.</p></div></li>
+        <li><span class="icon icon--accent icon--xs"><img src="assets/icons/shield-check.svg?v=2" alt="" width="14" height="14"></span><div><h3 class="h4" data-i18n="elderly.e2.title">Понятные ответы</h3><p data-i18n="elderly.e2.text">Ailan говорит вслух, что сделал, и переспрашивает перед важными действиями.</p></div></li>
+        <li><span class="icon icon--accent icon--xs"><img src="assets/icons/shield-check.svg?v=2" alt="" width="14" height="14"></span><div><h3 class="h4" data-i18n="elderly.e3.title">Родной язык</h3><p data-i18n="elderly.e3.text">Понимает казахский и русский и отвечает на том языке, на котором к нему обратились.</p></div></li>
+        <li><span class="icon icon--accent icon--xs"><img src="assets/icons/shield-check.svg?v=2" alt="" width="14" height="14"></span><div><h3 class="h4" data-i18n="elderly.e4.title">Самостоятельность</h3><p data-i18n="elderly.e4.text">Написать внукам или включить любимую песню можно без помощи детей.</p></div></li>
+      </ul>
+    </div>
+    <div class="split__media">
+      <img class="photo" src="assets/img/elderly.jpg" width="624" height="540" loading="lazy" data-i18n-alt="elderly.alt" alt="Пожилая женщина в платке улыбается, сидя дома на диване">
+    </div>
+  </div>
+</section>
+
+<section class="section section--dark" id="access" aria-labelledby="access-title">
+  <div class="container">
+    <header class="section__head">
+      <p class="pill pill--dark" data-i18n="access.eyebrow">Для незрячих и слабовидящих</p>
+      <h2 class="h2" id="access-title" data-i18n="access.title">Компьютер, которому не нужно видеть экран</h2>
+      <p class="lead" data-i18n="access.lead">При слабом зрении мелкая кнопка превращается в стену. С Ailan кнопки ищет не человек, а помощник.</p>
+    </header>
+    <div class="grid grid--3">
+      <article class="card card--dark">
+        <span class="icon icon--dark"><img src="assets/icons/sparkles.svg?v=2" alt="" width="20" height="20"></span>
+        <h3 class="h3" data-i18n="access.a1.title">Экран видеть не нужно</h3>
+        <p data-i18n="access.a1.text">Скажите задачу — Ailan сам найдёт нужное окно и нажмёт нужную кнопку.</p>
+      </article>
+      <article class="card card--dark">
+        <span class="icon icon--dark"><img src="assets/icons/sparkles.svg?v=2" alt="" width="20" height="20"></span>
+        <h3 class="h3" data-i18n="access.a2.title">Всё слышно</h3>
+        <p data-i18n="access.a2.text">Ailan озвучивает результат, а перед отправкой называет, кому и что он пишет.</p>
+      </article>
+      <article class="card card--dark">
+        <span class="icon icon--dark"><img src="assets/icons/sparkles.svg?v=2" alt="" width="20" height="20"></span>
+        <h3 class="h3" data-i18n="access.a3.title">Одна клавиша вместо мыши</h3>
+        <p data-i18n="access.a3.text">Зажмите клавишу Copilot и говорите: попадать курсором в кнопки не придётся.</p>
+      </article>
+    </div>
+    <p class="note" data-i18n="access.note">Этот сайт тоже можно сделать крупнее и контрастнее — кнопки «A+» и «Контраст» вверху страницы.</p>
+  </div>
+</section>
+
+<section class="section" id="family" aria-labelledby="family-title">
+  <div class="container split">
+    <div class="split__media">
+      <img class="photo" src="assets/img/family.jpg" width="624" height="540" loading="lazy" data-i18n-alt="family.alt" alt="Дочь и пожилая мама смеются, сидя на диване">
+    </div>
+    <div class="split__copy">
+      <p class="pill" data-i18n="family.eyebrow">Для семьи</p>
+      <h2 class="h2" id="family-title" data-i18n="family.title">Ваше спокойствие — их безопасность</h2>
+      <p class="lead" data-i18n="family.lead">Больше не нужно переживать, что близкие не справятся с компьютером, когда вас нет рядом.</p>
+      <ul class="points">
+        <li><span class="icon icon--ink icon--xs"><img src="assets/icons/sparkles.svg?v=2" alt="" width="14" height="14"></span><div><h3 class="h4" data-i18n="family.f1.title">Связь в любое время</h3><p data-i18n="family.f1.text">Родители сами напишут вам голосом в WhatsApp или Telegram.</p></div></li>
+        <li><span class="icon icon--ink icon--xs"><img src="assets/icons/sparkles.svg?v=2" alt="" width="14" height="14"></span><div><h3 class="h4" data-i18n="family.f2.title">Спокойствие на расстоянии</h3><p data-i18n="family.f2.text">Напоминания о таблетках и визитах к врачу прозвучат вовремя.</p></div></li>
+        <li><span class="icon icon--ink icon--xs"><img src="assets/icons/sparkles.svg?v=2" alt="" width="14" height="14"></span><div><h3 class="h4" data-i18n="family.f3.title">Помощь в беде</h3><p data-i18n="family.f3.text">На слово «Помогите» Ailan напишет и позвонит доверенному человеку.</p></div></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="section section--white" id="kazakh" aria-labelledby="kazakh-title">
+  <div class="container split">
+    <div class="split__copy">
+      <p class="pill" data-i18n="kazakh.eyebrow">ИИ на казахском языке</p>
+      <h2 class="h2" id="kazakh-title" data-i18n="kazakh.title">Сөйлесіңіз. Ailan сізді толық түсінеді.</h2>
+      <p class="lead" data-i18n="kazakh.lead">Мы уделили особое внимание казахскому языку: Ailan понимает команды, сказанные своими словами, и отвечает уважительно, сохраняя теплоту живого общения.</p>
+      <ul class="checks checks--plain">
+        <li><span class="icon icon--bare"><img src="assets/icons/sparkles.svg?v=2" alt="" width="20" height="20"></span><span data-i18n="kazakh.k1">Понимает казахскую и русскую речь</span></li>
+        <li><span class="icon icon--bare"><img src="assets/icons/sparkles.svg?v=2" alt="" width="20" height="20"></span><span data-i18n="kazakh.k2">Распознаёт команды, сказанные своими словами</span></li>
+        <li><span class="icon icon--bare"><img src="assets/icons/sparkles.svg?v=2" alt="" width="20" height="20"></span><span data-i18n="kazakh.k3">Вежливое обращение в казахских традициях</span></li>
+      </ul>
+    </div>
+    <div class="split__media">
+      <figure class="chat" lang="kk">
+        <figcaption class="chat__title"><svg class="chat__logo" aria-hidden="true"><use href="#crescent"/></svg><span data-i18n="kazakh.chat">Диалог с Ailan</span></figcaption>
+        <p class="bubble bubble--user">«Айлан, 10 минуттан кейін дәрі ішуді еске сал»</p>
+        <p class="bubble bubble--ailan">«Жарайды, 10 минуттан кейін еске саламын.»</p>
+        <p class="bubble bubble--user">«Айлан, анама жаз: үйдемін»</p>
+        <p class="bubble bubble--ailan">«„Мама“ чатына „үйдемін“ деп жіберейін бе?»</p>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<section class="mission" aria-labelledby="mission-title">
+  <div class="container mission__inner">
+    <svg class="mission__moon" aria-hidden="true"><use href="#crescent"/></svg>
+    <h2 class="mission__title" id="mission-title" data-i18n="mission.title">Самостоятельность для старшего поколения. Спокойствие для семьи.</h2>
+    <span class="mission__rule" aria-hidden="true"></span>
+    <p class="mission__lead" data-i18n="mission.lead">Технологии должны объединять людей, а не усложнять жизнь тем, кто нам дорог.</p>
+  </div>
+</section>
+
+<section class="section section--white" id="team" aria-labelledby="team-title">
+  <div class="container">
+    <header class="section__head">
+      <p class="pill" data-i18n="team.eyebrow">Команда</p>
+      <h2 class="h2" id="team-title" data-i18n="team.title">Создатели Ailan</h2>
+      <p class="lead" data-i18n="team.lead">Мы объединили искусственный интеллект и эмпатию, чтобы сделать мир вокруг нас немного лучше.</p>
+    </header>
+    <div class="grid grid--3">
+      <article class="person">
+        <img src="assets/img/team-1.jpg" width="411" height="280" loading="lazy" data-i18n-alt="team.t1.name" alt="Жаксылыков Ербота">
+        <div class="person__body">
+          <h3 class="h3" data-i18n="team.t1.name">Жаксылыков Ербота</h3>
+          <p class="person__role" data-i18n="team.t1.role">Основатель</p>
+          <p data-i18n="team.t1.text">Автор идеи Ailan и технический лидер; архитектура и разработка голосового агента: распознавание казахской и русской речи, управление программами Windows.</p>
+        </div>
+      </article>
+      <article class="person">
+        <img src="assets/img/team-2.jpg" width="411" height="280" loading="lazy" data-i18n-alt="team.t2.name" alt="Төлеубек Әсия">
+        <div class="person__body">
+          <h3 class="h3" data-i18n="team.t2.name">Төлеубек Әсия</h3>
+          <p class="person__role" data-i18n="team.t2.role">Сооснователь</p>
+          <p data-i18n="team.t2.text">Координация команды и развитие продукта; формирование концепции Ailan и управление процессом создания MVP.</p>
+        </div>
+      </article>
+      <article class="person">
+        <img src="assets/img/team-3.jpg" width="411" height="280" loading="lazy" data-i18n-alt="team.t3.name" alt="Бактыгалиева Альбина">
+        <div class="person__body">
+          <h3 class="h3" data-i18n="team.t3.name">Бактыгалиева Альбина</h3>
+          <p class="person__role" data-i18n="team.t3.role">Сооснователь</p>
+          <p data-i18n="team.t3.text">Работа с SQL и аналитикой данных; подготовка и исследование клиентских данных. Развитие компетенций в data analysis, бизнес-постановке задач и поиске решений на основе данных.</p>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="section cta" id="try" aria-labelledby="try-title">
+  <div class="container cta__inner">
+    <p class="pill" data-i18n="cta.eyebrow">Скоро пилот</p>
+    <h2 class="h2 cta__title" id="try-title" data-i18n="cta.title">Попробуйте Ailan бесплатно</h2>
+    <p class="lead" data-i18n="cta.lead">Сейчас Ailan работает на компьютерах с Windows. Скоро откроем запись в бесплатный пилот: установим и настроим Ailan вместе с вами.</p>
+    <div class="actions actions--center">
+      <a class="btn btn--primary" href="#how"><span data-i18n="cta.btn1">Как это работает</span><img src="assets/icons/arrow-right.svg?v=2" alt="" width="16" height="16"></a>
+      <a class="btn btn--ghost" href="#team" data-i18n="cta.btn2">Команда</a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="footer">
+  <div class="container footer__row">
+    <div class="footer__brand">
+      <a class="logo logo--light" href="#top" aria-label="Ailan"><svg class="logo__mark" aria-hidden="true"><use href="#crescent"/></svg><span class="logo__word">Ailan</span></a>
+      <p data-i18n="footer.tagline">Голосовой помощник на казахском и русском, который делает компьютер доступным для каждого.</p>
+    </div>
+  </div>
+  <div class="container footer__bottom">
+    <p data-i18n="footer.copy">© 2026 Ailan. Разработано в Казахстане.</p>
+  </div>
+</footer>
+
+<script src="i18n.js?v=2"></script>
+<script src="app.js?v=2"></script>
+</body>
+</html>

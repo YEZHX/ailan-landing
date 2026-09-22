@@ -1,0 +1,12 @@
+{
+  "name": "ailan-landing",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Ailan landing page (kk / ru / en)",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
