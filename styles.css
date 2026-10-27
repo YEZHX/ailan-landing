@@ -309,6 +309,13 @@ ul, ol { padding: 0; list-style: none; }
 .cta { text-align: center; }
 .cta__inner { display: grid; justify-items: center; gap: 1.25rem; max-width: 46rem; }
 .cta__title { font-size: clamp(2.375rem, 4.8vw, 3.75rem); }
+.cta__note { font-size: 0.95rem; color: var(--ink-2); margin: 0; }
+.cta__steps { list-style: none; counter-reset: step; display: grid; gap: 0.75rem; margin: 0.25rem 0 0; padding: 0;
+  max-width: 38rem; text-align: left; }
+.cta__steps li { counter-increment: step; display: grid; grid-template-columns: 2rem 1fr; gap: 0.75rem; align-items: start;
+  color: var(--ink-2); }
+.cta__steps li::before { content: counter(step); width: 2rem; height: 2rem; border-radius: 50%; display: grid;
+  place-items: center; background: var(--accent); color: var(--ink); font-weight: 800; }
 
 .footer { background: var(--dark); color: var(--on-dark-2); padding-block: 3.5rem 2rem; }
 .footer__row { display: flex; justify-content: space-between; gap: 2rem; flex-wrap: wrap; }
